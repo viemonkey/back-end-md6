@@ -12,6 +12,6 @@ app.use(express.static('./public'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
 app.use('', router)
-app.listen(3000, () => {
+app.listen(5000, () => {
     console.log('Server is running')
 })
