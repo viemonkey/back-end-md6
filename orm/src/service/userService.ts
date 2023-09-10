@@ -11,7 +11,9 @@ class UserService {
         this.Repository = AppDataSource.getRepository(User);
     }
     getAll = async () => {
-        return await this.Repository.find()
+        return await this.Repository.find({
+            relations:{role: true}
+        })
     }
     register = async (user) => {
         user.password = await bcrypt.hash(user.password, 10);
@@ -54,6 +56,8 @@ class UserService {
     update = async (id, data) => {
         return await this.Repository.update(id, data)
     }
+
+
 }
 export default new UserService();
 

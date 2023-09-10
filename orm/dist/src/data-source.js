@@ -10,7 +10,7 @@ exports.AppDataSource = new typeorm_1.DataSource({
     username: "root",
     password: "phong511",
     database: "house",
-    synchronize: true,
+    synchronize: false,
     entities: ["dist/src/entity/*.js"]
 });
 //# sourceMappingURL=data-source.js.map

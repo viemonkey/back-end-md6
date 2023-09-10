@@ -9,37 +9,20 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.User = void 0;
+exports.Role = void 0;
 const typeorm_1 = require("typeorm");
-const role_1 = require("./role");
-let User = class User {
+let Role = class Role {
 };
-exports.User = User;
+exports.Role = Role;
 __decorate([
     (0, typeorm_1.PrimaryGeneratedColumn)(),
     __metadata("design:type", Number)
-], User.prototype, "id", void 0);
+], Role.prototype, "id", void 0);
 __decorate([
     (0, typeorm_1.Column)({ type: 'varchar' }),
     __metadata("design:type", String)
-], User.prototype, "username", void 0);
-__decorate([
-    (0, typeorm_1.Column)({ type: 'varchar' }),
-    __metadata("design:type", String)
-], User.prototype, "password", void 0);
-__decorate([
-    (0, typeorm_1.Column)({ type: 'varchar' }),
-    __metadata("design:type", String)
-], User.prototype, "telephone", void 0);
-__decorate([
-    (0, typeorm_1.Column)({ type: 'varchar' }),
-    __metadata("design:type", String)
-], User.prototype, "address", void 0);
-__decorate([
-    (0, typeorm_1.ManyToOne)(() => role_1.Role, (role) => role.id),
-    __metadata("design:type", role_1.Role)
-], User.prototype, "role", void 0);
-exports.User = User = __decorate([
+], Role.prototype, "name", void 0);
+exports.Role = Role = __decorate([
     (0, typeorm_1.Entity)()
-], User);
-//# sourceMappingURL=user.js.map
+], Role);
+//# sourceMappingURL=role.js.map
