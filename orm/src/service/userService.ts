@@ -37,7 +37,6 @@ class UserService {
                     let token = jwt.sign(payload, SECRET, {
                         expiresIn: 36000 * 10 * 100
                     })
-
                     payload["token"]= token
                     return payload
                 } else {

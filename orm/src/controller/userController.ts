@@ -1,4 +1,4 @@
-import {Request, Response} from "express";
+import { Request, Response } from "express";
 import productService from "../service/userService";
 import * as fs from "fs";
 import userService from "../service/userService";
@@ -24,9 +24,9 @@ class UserController {
             let resultCheck = await userService.checkUser(req.body);
             res.status(200).json({
                 message: {
-
-                    token : resultCheck,
-                    username :req.body.username},
+                    token: resultCheck,
+                    username: req.body.username
+                },
                 success: true,
 
             });
@@ -36,11 +36,10 @@ class UserController {
                 message: 'error login',
                 success: false
             });
-
         }
     }
     findById = async (req: Request, res: Response) => {
-        let  listClassRoom= await userService.findById(req.params.id)
+        let listClassRoom = await userService.findById(req.params.id)
         res.json(listClassRoom);
     }
     update = async (req: Request, res: Response) => {
