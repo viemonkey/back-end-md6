@@ -13,13 +13,9 @@ export class User {
     password: string;
 
     @Column({type: 'varchar'})
-    email: string;
-
-    @Column({type: 'varchar'})
     role: string;
 
-    
     @Column({type: 'varchar'})
-    avatar: string;
+    telephone: string;
    
 }

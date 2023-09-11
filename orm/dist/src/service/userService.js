@@ -11,9 +11,7 @@ const bcrypt_1 = __importDefault(require("bcrypt"));
 class UserService {
     constructor() {
         this.getAll = async () => {
-            return await this.Repository.find({
-                relations: { role: true }
-            });
+            return await this.Repository.find();
         };
         this.register = async (user) => {
             user.password = await bcrypt_1.default.hash(user.password, 10);
@@ -53,6 +51,7 @@ class UserService {
             return await this.Repository.find({ where: { id: id } });
         };
         this.update = async (id, data) => {
+            data.password = await bcrypt_1.default.hash(data.password, 10);
             return await this.Repository.update(id, data);
         };
         this.Repository = data_source_1.AppDataSource.getRepository(user_1.User);
