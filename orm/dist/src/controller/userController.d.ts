@@ -7,6 +7,7 @@ declare class UserController {
     login: (req: Request, res: Response) => Promise<void>;
     findById: (req: Request, res: Response) => Promise<void>;
     update: (req: Request, res: Response) => Promise<void>;
+    getUser: (req: Request, res: Response) => Promise<void>;
 }
 declare const _default: UserController;
 export default _default;

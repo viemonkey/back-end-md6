@@ -4,11 +4,19 @@ import { Like } from "typeorm";
 import jwt from "jsonwebtoken";
 import {SECRET} from "../middleware/jwt";
 import bcrypt from 'bcrypt'
+import {Request} from "express";
 
 class UserService {
     private Repository;
     constructor() {
         this.Repository = AppDataSource.getRepository(User);
+    }
+    getUser = async (role) => {
+        return await this.Repository.find({
+            where : {
+                role : role,
+            }
+        })
     }
     getAll = async () => {
         return await this.Repository.find()

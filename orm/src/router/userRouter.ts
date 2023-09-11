@@ -3,6 +3,7 @@ import userController from "../controller/userController";
 
 const userRouter = Router();
 userRouter.get('/', userController.findAll);
+userRouter.get('/getUSer', userController.getUser);
 userRouter.get('/:id', userController.findById);
 userRouter.put('/:id', userController.update);
 userRouter.post('/login', userController.login);

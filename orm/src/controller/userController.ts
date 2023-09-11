@@ -47,10 +47,11 @@ class UserController {
         let result = await this.userService.update(req.params.id, req.body);
         res.json("sửa thành công")
     }
+    getUser = async (req: Request, res: Response) => {
+        let  user= await userService.getUser(req.query.role)
+        res.json(user);
 
-
-
-
+    }
 }
 
 export default new UserController();

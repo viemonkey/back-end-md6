@@ -10,6 +10,13 @@ const jwt_1 = require("../middleware/jwt");
 const bcrypt_1 = __importDefault(require("bcrypt"));
 class UserService {
     constructor() {
+        this.getUser = async (role) => {
+            return await this.Repository.find({
+                where: {
+                    role: role,
+                }
+            });
+        };
         this.getAll = async () => {
             return await this.Repository.find();
         };

@@ -17,5 +17,8 @@ export class User {
 
     @Column({type: 'varchar'})
     telephone: string;
+
+    @Column({type: 'varchar'})
+    avatar: string;
    
 }
