@@ -9,14 +9,25 @@ class UserController {
     constructor() {
         this.userService = userService;
     }
-
-    findAll = async (req: Request, res: Response) => {
-        let listProduct = await this.userService.getAll();
-        res.json(listProduct);
+    getAllUser = async (req: Request, res: Response) => {
+        let user='';   
+        if(req.query.id){
+            console.log("req.query.id", req.query.id);
+            user = await this.userService.findById(req.query.id)
+        }
+        else if(req.query.role) {
+            console.log("req.query.role", req.query.role);
+            user = await this.userService.getUser(req.query.role)
+        }
+        else{
+            user = await this.userService.getAll();
+        }
+        res.json(user);
     }
+
     register = async (req: Request, res: Response) => {
         let result = await userService.register(req.body);
-        res.json(result);
+        res.json("dang ky tai khoan thanh cong");
     }
 
     login = async (req: Request, res: Response) => {
@@ -39,18 +50,22 @@ class UserController {
 
         }
     }
-    findById = async (req: Request, res: Response) => {
-        let  listClassRoom= await userService.findById(req.params.id)
-        res.json(listClassRoom);
-    }
+    // findById = async (req: Request, res: Response) => {
+    //     let  user= await userService.findById(req.params.id)
+    //     res.json(user);
+    // }
     update = async (req: Request, res: Response) => {
         let result = await this.userService.update(req.params.id, req.body);
         res.json("sửa thành công")
     }
-    getUser = async (req: Request, res: Response) => {
-        let  user= await userService.getUser(req.query.role)
-        res.json(user);
+    // getUser = async (req: Request, res: Response) => {
+    //     let  user= await userService.getUser(req.query.role)
+    //     res.json(user);
 
+    // }
+    delete = async (req: Request, res: Response) => {
+        let  user = await userService.delete(req.params.id)
+        res.json('xoa thanh cong');
     }
 }
 

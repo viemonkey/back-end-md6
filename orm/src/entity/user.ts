@@ -20,5 +20,8 @@ export class User {
 
     @Column({type: 'varchar'})
     avatar: string;
+
+    @Column({type: 'varchar'})
+    status: string;
    
 }

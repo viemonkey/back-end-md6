@@ -3,6 +3,9 @@ declare class UserService {
     constructor();
     getUser: (role: any) => Promise<any>;
     getAll: () => Promise<any>;
+    findById: (id: any) => Promise<any>;
+    update: (id: any, data: any) => Promise<any>;
+    delete: (id: any) => Promise<any>;
     register: (user: any) => Promise<any>;
     checkUser: (user: any) => Promise<"User is not exist" | {
         idUser: any;
@@ -10,8 +13,6 @@ declare class UserService {
         role: string;
         image: any;
     } | "Password is wrong">;
-    findById: (id: any) => Promise<any>;
-    update: (id: any, data: any) => Promise<any>;
 }
 declare const _default: UserService;
 export default _default;

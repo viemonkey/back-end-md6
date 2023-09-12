@@ -2,10 +2,10 @@ import {Router} from "express";
 import userController from "../controller/userController";
 
 const userRouter = Router();
-userRouter.get('/', userController.findAll);
-userRouter.get('/getUSer', userController.getUser);
-userRouter.get('/:id', userController.findById);
+userRouter.delete('/:id', userController.delete);
+userRouter.get('/', userController.getAllUser);
 userRouter.put('/:id', userController.update);
-userRouter.post('/login', userController.login);
-userRouter.post('/register', userController.register);
+// userRouter.get('/', userController.findById);
+
+
 export default userRouter;

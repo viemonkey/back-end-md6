@@ -6,13 +6,24 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const userService_1 = __importDefault(require("../service/userService"));
 class UserController {
     constructor() {
-        this.findAll = async (req, res) => {
-            let listProduct = await this.userService.getAll();
-            res.json(listProduct);
+        this.getAllUser = async (req, res) => {
+            let user = '';
+            if (req.query.id) {
+                console.log("req.query.id", req.query.id);
+                user = await this.userService.findById(req.query.id);
+            }
+            else if (req.query.role) {
+                console.log("req.query.role", req.query.role);
+                user = await this.userService.getUser(req.query.role);
+            }
+            else {
+                user = await this.userService.getAll();
+            }
+            res.json(user);
         };
         this.register = async (req, res) => {
             let result = await userService_1.default.register(req.body);
-            res.json(result);
+            res.json("dang ky tai khoan thanh cong");
         };
         this.login = async (req, res) => {
             try {
@@ -33,17 +44,13 @@ class UserController {
                 });
             }
         };
-        this.findById = async (req, res) => {
-            let listClassRoom = await userService_1.default.findById(req.params.id);
-            res.json(listClassRoom);
-        };
         this.update = async (req, res) => {
             let result = await this.userService.update(req.params.id, req.body);
             res.json("sửa thành công");
         };
-        this.getUser = async (req, res) => {
-            let user = await userService_1.default.getUser(req.query.role);
-            res.json(user);
+        this.delete = async (req, res) => {
+            let user = await userService_1.default.delete(req.params.id);
+            res.json('xoa thanh cong');
         };
         this.userService = userService_1.default;
     }

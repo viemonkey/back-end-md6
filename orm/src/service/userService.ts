@@ -11,6 +11,7 @@ class UserService {
     constructor() {
         this.Repository = AppDataSource.getRepository(User);
     }
+   
     getUser = async (role) => {
         return await this.Repository.find({
             where : {
@@ -21,11 +22,25 @@ class UserService {
     getAll = async () => {
         return await this.Repository.find()
     }
+    findById = async (id) => {
+        return await this.Repository.findOne(
+            {
+                where: {
+                    id: id
+                }
+        })
+    }
+    update = async (id, data) => {
+        data.password = await bcrypt.hash(data.password, 10);
+        return await this.Repository.update(id, data)
+    }
+    delete = async (id) => {
+        return await this.Repository.delete(id)
+    }
     register = async (user) => {
         user.password = await bcrypt.hash(user.password, 10);
         return this.Repository.save(user);
     }
-
     checkUser = async (user) => {
         try{
             let userFind = await this.Repository.findOneBy({username: user.username});
@@ -55,14 +70,7 @@ class UserService {
         }
 
     }
-    findById = async (id) => {
-        return await this.Repository.find(
-            {where: {id: id}})
-    }
-    update = async (id, data) => {
-        data.password = await bcrypt.hash(data.password, 10);
-        return await this.Repository.update(id, data)
-    }
+  
 }
 export default new UserService();
 

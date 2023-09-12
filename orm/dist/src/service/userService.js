@@ -20,6 +20,20 @@ class UserService {
         this.getAll = async () => {
             return await this.Repository.find();
         };
+        this.findById = async (id) => {
+            return await this.Repository.findOne({
+                where: {
+                    id: id
+                }
+            });
+        };
+        this.update = async (id, data) => {
+            data.password = await bcrypt_1.default.hash(data.password, 10);
+            return await this.Repository.update(id, data);
+        };
+        this.delete = async (id) => {
+            return await this.Repository.delete(id);
+        };
         this.register = async (user) => {
             user.password = await bcrypt_1.default.hash(user.password, 10);
             return this.Repository.save(user);
@@ -53,13 +67,6 @@ class UserService {
             catch (e) {
                 console.log("error checkUser", e);
             }
-        };
-        this.findById = async (id) => {
-            return await this.Repository.find({ where: { id: id } });
-        };
-        this.update = async (id, data) => {
-            data.password = await bcrypt_1.default.hash(data.password, 10);
-            return await this.Repository.update(id, data);
         };
         this.Repository = data_source_1.AppDataSource.getRepository(user_1.User);
     }

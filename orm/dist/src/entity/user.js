@@ -38,6 +38,10 @@ __decorate([
     (0, typeorm_1.Column)({ type: 'varchar' }),
     __metadata("design:type", String)
 ], User.prototype, "avatar", void 0);
+__decorate([
+    (0, typeorm_1.Column)({ type: 'varchar' }),
+    __metadata("design:type", String)
+], User.prototype, "status", void 0);
 exports.User = User = __decorate([
     (0, typeorm_1.Entity)()
 ], User);
