@@ -5,7 +5,7 @@ const userRouter = Router();
 userRouter.delete('/:id', userController.delete);
 userRouter.get('/', userController.getAllUser);
 userRouter.put('/:id', userController.update);
-// userRouter.get('/', userController.findById);
+// userRouter.get('/:id', userController.findById);
 
 
 export default userRouter;
