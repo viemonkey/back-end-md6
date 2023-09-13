@@ -1,6 +1,4 @@
 import {Request, Response} from "express";
-import productService from "../service/userService";
-import * as fs from "fs";
 import userService from "../service/userService";
 
 class UserController {
@@ -12,11 +10,9 @@ class UserController {
     getAllUser = async (req: Request, res: Response) => {
         let user='';   
         if(req.query.id){
-            console.log("req.query.id", req.query.id);
             user = await this.userService.findById(req.query.id)
         }
         else if(req.query.role) {
-            console.log("req.query.role", req.query.role);
             user = await this.userService.getUser(req.query.role)
         }
         else{

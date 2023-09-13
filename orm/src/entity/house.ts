@@ -1,25 +1,36 @@
 import {Column, Entity, ManyToOne, PrimaryGeneratedColumn} from "typeorm";
+import { User } from "./user";
+
 @Entity()
-export class User {
+export class House {
     @PrimaryGeneratedColumn()
     id: number;
 
     @Column({type: 'varchar'})
-    username: string;
+    name: string;
 
     @Column({type: 'varchar'})
-    password: string;
+    address: string;
 
     @Column({type: 'varchar'})
-    role: string;
+    numberOfBedrooms: string;
 
     @Column({type: 'varchar'})
-    telephone: string;
+    numberOfBathrooms: string;
+
+    @Column({type: 'varchar'})
+    description: string;
+
+    @Column({type: 'varchar'})
+    price: string;
 
     @Column({type: 'varchar'})
     avatar: string;
 
     @Column({type: 'varchar'})
     status: string;
-   
+
+    @ManyToOne(() => User, (user) => user.id)
+    user: User;
+
 }
