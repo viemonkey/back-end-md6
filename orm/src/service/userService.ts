@@ -1,4 +1,4 @@
-import { User } from "../entity/user";
+import { User } from "../entities/user";
 import {AppDataSource} from "../data-source";
 import { Like } from "typeorm";
 import jwt from "jsonwebtoken";

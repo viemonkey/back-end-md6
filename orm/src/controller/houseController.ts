@@ -12,6 +12,12 @@ class HouseController {
         if(req.query.id) {
             house = await this.houseService.findById(req.query.id)
         }
+        else if(req.query.name) {
+            house = await this.houseService.findByName(req.query.name)
+        }
+        else if(req.query.status) {
+            house = await this.houseService.findByStatus(req.query.status)
+        }
         else {
             house = await this.houseService.findByAll()
         }

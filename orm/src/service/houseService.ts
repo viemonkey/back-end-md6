@@ -1,5 +1,6 @@
+import { ILike } from "typeorm";
 import { AppDataSource } from "../data-source";
-import { House } from "../entity/house";
+import { House } from "../entities/house";
 
 class HouseService {
     private Repository;
@@ -28,6 +29,24 @@ class HouseService {
     findById = async (id)=>{
         return await this.Repository.findOne({
             where: { id },
+            relations : {
+                user : true
+            },
+        })
+    }
+    findByName = async (name)=>{
+        return await this.Repository.find({
+            where: { 
+                name: ILike(`%${name}%`)
+            },
+            relations : {
+                user : true
+            },
+        })
+    }
+    findByStatus = async (status)=>{
+        return await this.Repository.find({
+            where: { status },
             relations : {
                 user : true
             },

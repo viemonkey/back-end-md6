@@ -1,7 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 const data_source_1 = require("../data-source");
-const picture_1 = require("../entity/picture");
+const picture_1 = require("../entities/picture");
 class PictureService {
     constructor() {
         this.postPicture = async (data) => {

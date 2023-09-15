@@ -1,5 +1,5 @@
 import { AppDataSource } from "../data-source";
-import { Picture } from "../entity/picture";
+import { Picture } from "../entities/picture";
 
 
 class PictureService {
